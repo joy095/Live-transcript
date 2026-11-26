@@ -1,0 +1,1 @@
+{"root":["./src/client/auth-client.ts","./src/client/main.tsx","./src/client/ui.tsx","./src/worker/auth.cli.ts","./src/worker/auth.ts","./src/worker/env.ts","./src/worker/index.ts","./src/worker/db/schema.ts"],"version":"5.7.3"}

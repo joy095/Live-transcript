@@ -1,0 +1,40 @@
+{
+  "name": "voicetrail-cloudflare",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "dev:worker": "wrangler dev --port 8787",
+    "build": "tsc -b && vite build",
+    "deploy": "npm run build && wrangler deploy",
+    "auth:generate": "npx auth@latest generate --config ./src/worker/auth.cli.ts --adapter drizzle --dialect sqlite --output ./src/worker/db/auth-schema.generated.ts --yes",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply voicetrail-db --local",
+    "db:migrate": "drizzle-kit migrate",
+    "db:migrate:remote": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.4.3",
+    "better-auth": "^1.4.5",
+    "drizzle-orm": "^0.44.7",
+    "dotenv": "^16.4.7",
+    "hono": "^4.7.2",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250109.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "drizzle-kit": "^0.30.4",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.7",
+    "wrangler": "^4.1.0"
+  }
+}
